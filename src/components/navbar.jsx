@@ -4,6 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
+const navItems = [
+  { href: "/", label: "Início", icon: "/house.svg" },
+  { href: "/quemsomos", label: "Quem somos?", icon: "/info.svg" },
+  { href: "/avisos", label: "Avisos", icon: "/megaphone.svg" },
+  { href: "/contatos", label: "Contatos", icon: "/users.svg" },
+];
+
 export default function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -12,54 +19,24 @@ export default function NavBar() {
       <div className="flex justify-between">
         <nav className="flex flex-col gap-1 text-neutral-100 pl-6 pt-2 sm:text-base text-xl max-w-fit">
           <ul className="flex flex-col">
-            <li className="hover:underline">
-              <Link className="flex" href="/">
-                <Image
-                  className="pr-2"
-                  src="/house.svg"
-                  alt="Início"
-                  width={33}
-                  height={33}
-                />
-                Início
-              </Link>
-            </li>
-            <li className="hover:underline">
-              <Link className="flex" href="/quemsomos">
-                <Image
-                  className="pr-2"
-                  src="/info.svg"
-                  alt="Quem somos?"
-                  width={33}
-                  height={33}
-                />
-                Quem somos?
-              </Link>
-            </li>
-            <li className="hover:underline">
-              <Link className="flex" href="/avisos">
-                <Image
-                  className="pr-2"
-                  src="/megaphone.svg"
-                  alt="Avisos"
-                  width={33}
-                  height={33}
-                />
-                Avisos
-              </Link>
-            </li>
-            <li className="hover:underline">
-              <Link className="flex" href="/contatos">
-                <Image
-                  className="pr-2"
-                  src="/users.svg"
-                  alt="Contatos"
-                  width={33}
-                  height={33}
-                />
-                Contatos
-              </Link>
-            </li>
+            {navItems.map((item) => (
+              <li key={item.href} className="hover:underline pb-2">
+                <Link
+                  onClick={() => setIsOpen(false)}
+                  className="flex"
+                  href={item.href}
+                >
+                  <Image
+                    className="pr-2"
+                    src={item.icon}
+                    alt={item.label}
+                    width={33}
+                    height={33}
+                  />
+                  {item.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="flex items-start">
@@ -67,9 +44,9 @@ export default function NavBar() {
             <Image
               src="/x.svg"
               alt="Close"
-              width={60}
-              height={60}
-              className="pr-4 pt-2"
+              width={40}
+              height={40}
+              className="pr-0.5 pt-2"
             />
           </button>
         </div>
@@ -78,31 +55,28 @@ export default function NavBar() {
   }
 
   return (
-    <div className="h-14 bg-neutral-950 text-neutral-100 flex justify-between items-center sm:text-base text-sm pl-1 pr-4 w-screen">
-      <Image
-        src="/logo-luterana.png"
-        alt="logo luterana"
-        width={50}
-        height={50}
-      />
-      <nav className="hidden sm:flex justify-around w-full">
+    <div className="h-14 bg-neutral-950 text-neutral-100 flex items-center justify-between sm:text-base text-sm pl-4 pr-4 w-screen">
+      <div className="flex-shrink-0">
+        <Image
+          src="/logo-luterana.png"
+          alt="logo luterana"
+          width={50}
+          height={50}
+        />
+      </div>
+
+      <nav className="hidden sm:flex justify-center flex-1">
         <ul className="flex gap-3 sm:gap-6 items-center">
-          <li className="hover:underline">
-            <Link className="flex" href="/">
-              Início
-            </Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="/quemsomos">Quem somos?</Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="/avisos">Avisos</Link>
-          </li>
-          <li className="hover:underline">
-            <Link href="/contatos">Contatos</Link>
-          </li>
+          {navItems.map((item) => (
+            <li key={item.href} className="hover:underline hover:scale-105">
+              <Link className="flex" href={item.href}>
+                {item.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
+
       <button className="sm:hidden" onClick={() => setIsOpen(true)}>
         <Image src="/align-right.svg" alt="menu" width={35} height={35} />
       </button>
