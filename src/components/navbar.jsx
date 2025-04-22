@@ -17,7 +17,7 @@ export default function NavBar() {
   if (isOpen) {
     return (
       <div className="flex justify-between">
-        <nav className="flex flex-col gap-1 text-neutral-100 pl-6 pt-2 sm:text-base text-xl max-w-fit">
+        <nav className="flex flex-col gap-1 text-neutral-950 pl-6 pt-2 sm:text-base text-xl max-w-fit">
           <ul className="flex flex-col">
             {navItems.map((item) => (
               <li key={item.href} className="hover:underline pb-2">
@@ -55,7 +55,7 @@ export default function NavBar() {
   }
 
   return (
-    <div className="h-14 bg-neutral-950 text-neutral-100 flex items-center justify-between sm:text-base text-sm pl-4 pr-4 w-screen">
+    <div className="h-14 bg-neutral-100 text-neutral-950 flex items-center justify-between sm:text-base text-sm pl-4 pr-4 w-screen">
       <div className="flex-shrink-0">
         <Image
           src="/logo-luterana.png"

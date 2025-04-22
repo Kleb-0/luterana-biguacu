@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 export default function QuemSomos() {
   return (
-    <div className="text-neutral-100 lg:px-60 px-2 pl-3 pt-8 flex flex-col justify-center w-full">
-      <h1 className="text-center text-3xl">Um pouco sobre a <strong>comunidade</strong></h1>
+    <div className="text-neutral-900 lg:px-60 px-2 pl-3 pt-8 flex flex-col justify-center w-full">
+      <h1 className="text-center text-3xl font-semibold">Um pouco sobre a comunidade</h1>
       <p className="text-lg pt-14 sm:pt-10 px-3">
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos corporis
         qui minima non praesentium dolorum labore quas ea harum consequatur at
